@@ -52,5 +52,9 @@ namespace Bookanizer.Repos
             var most = _books.Max(b => b.Quantity);
             return _books.Where(b => b.Quantity == most).ToList();
         }
+        public IReadOnlyList<BookRecord> OrderedByDate()
+        {
+            return _books.OrderBy(b => b.PublishDate).ThenBy(b => b.Title).ToList();
+        }
     }
 }

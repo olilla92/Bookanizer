@@ -82,6 +82,9 @@ namespace Bookanizer.FileReader
             }
             catch(Exception ex) { Console.WriteLine(ex.Message); }
 
+            Console.WriteLine("\nA könyvek listája kiadás éve szerint rendezve: ");
+            foreach(var record in bookRepo.OrderedByDate())
+                Console.WriteLine($"\t{record.Title} - {record.PublishDate}");
         }
     } 
 }
