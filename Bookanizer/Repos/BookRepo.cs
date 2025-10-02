@@ -43,7 +43,7 @@ namespace Bookanizer.Repos
         }
         public IReadOnlyList<BookRecord> Purchase(string which, decimal amount)
         {
-            return _books.Where(b => b.Title == which && b.Quantity >= amount).Select(b => b).ToList();
+            return _books.Where(b => b.Title == which).Select(b => b).ToList();
         }
     }
 }
