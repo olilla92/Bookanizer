@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Bookanizer.Repos;
 
 namespace Bookanizer.Models
 {
@@ -11,7 +12,7 @@ namespace Bookanizer.Models
         public string Title { get; set; }   
         public string Author { get; set; }
         public string Publisher { get; set; }
-        public DateTime PublishDate { get; set; }
+        public int PublishDate { get; set; }
         public decimal Quantity { get; set; }
         public int Price { get; set; }
 
@@ -21,7 +22,7 @@ namespace Bookanizer.Models
             Title = t[0];
             Author = t[1];
             Publisher = t[2];
-            PublishDate = DateTime.Parse(t[3]);
+            PublishDate = int.Parse(t[3]);
             Quantity = Convert.ToDecimal(t[4]);
             Price = Convert.ToInt32(t[5]);
         }
