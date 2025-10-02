@@ -53,6 +53,12 @@ namespace Bookanizer.FileReader
 
             Console.WriteLine($"\nA könyvek száma: {bookRepo.BookCount()} db");
 
+            Console.WriteLine($"\nA könyvek átlagára: {bookRepo.AverageBooksPrice().ToString("000")} Ft");
+
+            Console.WriteLine($"\nLegtöbb könyv a raktáron: ");
+            foreach(var record in bookRepo.MostAmountBook())
+                Console.WriteLine($"\t{record.Title}  ->   {record.Quantity} db");
+
             int pubyear = 2009;
             Console.WriteLine($"\nKeresés kiadási év alapján: {pubyear}");
             foreach (var record in bookRepo.PulishedIn2000(pubyear))

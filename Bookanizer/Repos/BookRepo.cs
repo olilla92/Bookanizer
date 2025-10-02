@@ -17,6 +17,8 @@ namespace Bookanizer.Repos
 
         public BookRecord? Find(string Title, string Author, string Publisher, int PublisherDate, decimal Quantity, int Price) => _books.FirstOrDefault(b => b.Title == Title && b.Author == Author && b.Publisher == Publisher && b.PublishDate == PublisherDate && b.Quantity == Quantity && b.Price == Price);
         public int BookCount() => _books.Count;
+        public double AverageBooksPrice() => _books.Select(b => b.Price).Average();
+        
         //public decimal Purchase(string which, decimal amount) => _books.Where(b => b.Title == which && b.Quantity == amount).Select(b => b).ToList();
         public bool Add(BookRecord book)
         {
@@ -44,6 +46,11 @@ namespace Bookanizer.Repos
         public IReadOnlyList<BookRecord> Purchase(string which, decimal amount)
         {
             return _books.Where(b => b.Title == which).Select(b => b).ToList();
+        }
+        public IReadOnlyList<BookRecord> MostAmountBook()
+        {
+            var most = _books.Max(b => b.Quantity);
+            return _books.Where(b => b.Quantity == most).ToList();
         }
     }
 }
