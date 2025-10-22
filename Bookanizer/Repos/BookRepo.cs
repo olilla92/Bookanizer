@@ -28,7 +28,30 @@ namespace Bookanizer.Repos
                 Console.WriteLine(ex.Message);
             }
         }
+
+        public int NumberOfBooks => _books.Count;
+
+        public BookRecord? Find(string title, string author, string publisher, decimal publishdate, int quantity, int price) => _books.FirstOrDefault(b => b.Title == title && b.Author == author && b.Publisher == publisher && b.PublishDate == publishdate && b.Quantity == quantity && b.Price == price);
         
+        public bool Add(BookRecord book)
+        {
+            if(book == null)
+                throw new ArgumentNullException(nameof(book));
+            BookRecord? foundItem = Find(book.Title, book.Author, book.Publisher, book.PublishDate, book.Quantity, book.Price);
+            if (foundItem != null)
+                return false;
+            _books.Add(book);
+            return true;
+        }
+
+        public bool Remove(string title, string author, string publisher, decimal publishdate, int quantity, int price)
+        {
+            BookRecord? foundItem = Find(title, author, publisher, publishdate, quantity, price);
+            if (foundItem == null)
+                return false;
+            _books.Remove(foundItem);
+            return true;
+        }
 
         public List<string> AllBooks()
         {

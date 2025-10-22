@@ -4,6 +4,8 @@ using Bookanizer.Repos;
 BookRepo repo = new BookRepo();
 repo.ReadDataFrom("bookanizer.csv");
 
+Console.WriteLine($"\nA könyvek száma: {repo.NumberOfBooks} db\n");
+
 Console.WriteLine($"\nA könyvcímek listája: ");
 foreach(string title in repo.AllBooks())
     Console.WriteLine($"\t{title}");
@@ -34,3 +36,8 @@ foreach(BookRecord most in repo.MostAmountBook())
 Console.WriteLine($"\nRendezés kiadás időrendje szerint: ");
 foreach (BookRecord ordered in repo.OrderedByDate())
     Console.WriteLine($"\t{ordered.Title} - {ordered.PublishDate}");
+
+Console.WriteLine("Könyv törlése: ");
+bool removed1 = repo.Remove("A titánok bukása", "Ken Follett", "Pac Macmilan", 2010, 22, 7899);
+Console.WriteLine($"A titánok bukása törölve lett-e? {removed1}");
+Console.WriteLine($"Könyvek száma törlés után: {repo.NumberOfBooks}");

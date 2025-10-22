@@ -20,7 +20,7 @@ namespace Bookanizer.Models
         {
             string[] t = line.Split(separator);
             BookRecord bookRecord = new BookRecord();
-
+            
             bookRecord.Title = t[0];
             bookRecord.Author = t[1];
             bookRecord.Publisher = t[2];
