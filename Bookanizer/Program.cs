@@ -6,6 +6,11 @@ repo.ReadDataFrom("bookanizer.csv");
 
 Console.WriteLine($"\nA könyvek száma: {repo.NumberOfBooks} db\n");
 
+var addBook = new BookRecord(); addBook.Title = "Űrodisszeia"; addBook.Author = "Arthur C. Clarke";addBook.Publisher = "metropolis media group kft"; addBook.PublishDate = 2001; addBook.Quantity = 40; addBook.Price = 3500;
+repo.Add(addBook);
+Console.WriteLine($"A hozzáadott könyv címe: {addBook.Title}");
+
+
 Console.WriteLine($"\nA könyvcímek listája: ");
 foreach(string title in repo.AllBooks())
     Console.WriteLine($"\t{title}");
